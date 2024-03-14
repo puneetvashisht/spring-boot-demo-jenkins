@@ -1,26 +1,24 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.8.4' // Specify the Maven Docker image version
-            args '-v $HOME/.m2:/root/.m2' // Mount the local Maven repository to the Docker container
-        }
-    }
+    agent any
     
     stages {
         stage('Build') {
             steps {
+                echo 'Building...'
                 sh 'mvn clean install' // Run Maven build commands
             }
         }
         
         stage('Test') {
             steps {
+                echo 'Testing..'
                 sh 'mvn test' // Run Maven test commands
             }
         }
         
         stage('Package') {
             steps {
+                echo 'Packaging'
                 sh 'mvn package' // Run Maven package commands
             }
         }
