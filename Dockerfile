@@ -1,5 +1,5 @@
-FROM openjdk:17.0.1-jdk-slim
+FROM openjdk:17-jdk-alpine3.13
 VOLUME /tmp
-ADD target/spring-boot-demo-0.0.1-SNAPSHOT.jar spring-boot-demo-0.0.1-SNAPSHOT.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","/spring-boot-demo-0.0.1-SNAPSHOT.jar"]
+ADD target/*.jar app.jar
+EXPOSE 8000
+ENTRYPOINT ["java","-jar","/app.jar"]
